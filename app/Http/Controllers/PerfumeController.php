@@ -29,7 +29,7 @@ class PerfumeController extends Controller
         ]);
         if($validator->fails())
         {
-            return redirect("/perfumes")->with('alert', "Ne hagyj mezőt üresen!");
+            return redirect("/perfumes")->with('alert', "Hibás mezők!");
         }
         Perfume::create($input);
         return redirect( "/perfumes" );
@@ -54,7 +54,7 @@ class PerfumeController extends Controller
         ]);
         if($validator->fails())
         {
-            return redirect("/perfumes")->with('alert', "Ne hagyj mezőt üresen!");
+            return redirect("/perfumes")->with('alert', "Hibás mezők!");
         }
         $perfume->update([
             'name'=>$request->name,
