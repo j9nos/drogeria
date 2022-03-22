@@ -8,17 +8,20 @@
 </head>
 <body>
 
-
-
     @switch(Request::url())
-        @case('/')
+        @case("http://localhost:8000")
             <h1>Perfumes</h1>
             @break
     
-        @case(2)
-            Second case...
+        @case("http://localhost:8000/perfumes")
+            <h1>Perfumes</h1>
             @break
     
+        @case("http://localhost:8000/new-perfume")
+            <h1>New Perfume</h1>
+            @break
+
+
         @default
             Default case...
     @endswitch
