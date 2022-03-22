@@ -14,9 +14,7 @@ use App\Http\Controllers\PerfumeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PerfumeController::class, "getPerfumes"]);
 
 Route::get( "/perfumes", [ PerfumeController::class, "getPerfumes" ]);
 Route::get( "/new-perfume", [ PerfumeController::class, "newPerfume" ]);

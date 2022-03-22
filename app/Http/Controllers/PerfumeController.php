@@ -47,8 +47,7 @@ class PerfumeController extends Controller
             'type'=>$request->type,
             'price'=>$request->price,
         ]);
-        $perfumes = Perfume::all();
-        return view("/perfumes", ["perfumes"=>$perfumes]);
+        return redirect( "/perfumes" );
     }
 
     public function deletePerfume( $id ) {
