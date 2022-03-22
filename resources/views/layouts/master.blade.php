@@ -7,10 +7,11 @@
     <title></title>
 </head>
 <body>
+
     @if(Request::is("/"))
-        <h1>perfumes</h1>
+        <h1>Perfumes</h1>
     @elseif(Request::is("perfumes"))
-        <h1>perfumes</h1>
+        <h1>Perfumes</h1>
     @elseif(Request::is("new-perfume"))
         <h1>Add new perfume</h1>
     @elseif(Request::is("edit-perfume/*"))
@@ -18,6 +19,7 @@
     @else
         <h1>perfumes</h1>
     @endif
+
     @yield( "content" )
 </body>
 </html>
