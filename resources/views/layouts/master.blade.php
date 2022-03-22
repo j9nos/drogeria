@@ -7,26 +7,17 @@
     <title></title>
 </head>
 <body>
-
-    @switch(Request::url())
-        @case("http://localhost:8000")
-            <h1>Perfumes</h1>
-            @break
-    
-        @case("http://localhost:8000/perfumes")
-            <h1>Perfumes</h1>
-            @break
-    
-        @case("http://localhost:8000/new-perfume")
-            <h1>New Perfume</h1>
-            @break
-
-
-        @default
-            Default case...
-    @endswitch
-        
-    
+    @if(Request::is("/"))
+        <h1>perfumes</h1>
+    @elseif(Request::is("perfumes"))
+        <h1>perfumes</h1>
+    @elseif(Request::is("new-perfume"))
+        <h1>Add new perfume</h1>
+    @elseif(Request::is("edit-perfume/*"))
+        <h1>Edit a perfume</h1>
+    @else
+        <h1>perfumes</h1>
+    @endif
     @yield( "content" )
 </body>
 </html>
