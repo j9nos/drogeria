@@ -7,8 +7,23 @@
     <title></title>
 </head>
 <body>
-    <h1>ezt valt</h1>
 
+
+
+    @switch(Request::url())
+        @case('/')
+            <h1>Perfumes</h1>
+            @break
+    
+        @case(2)
+            Second case...
+            @break
+    
+        @default
+            Default case...
+    @endswitch
+        
+    
     @yield( "content" )
 </body>
 </html>

@@ -21,16 +21,18 @@ class PerfumeController extends Controller
     }
 
     public function storePerfume( Request $request ) {
-
-        $perfume = new Perfume;
-
-        $perfume->name = $request->name;
-        $perfume->type = $request->type;
-        $perfume->price = (int)$request->price;
-
-        $perfume->save();
-
-        return redirect( "/new-perfume" );
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            "name"=>"required",
+            "type"=>"required",
+            "price"=>"required|integer"
+        ]);
+        if($validator->fails())
+        {
+            return redirect("/perfumes")->with('alert', "Ne hagyj mezőt üresen!");
+        }
+        Perfume::create($input);
+        return redirect( "/perfumes" );
     }
 
     public function editPerfume( $id ) {
@@ -48,7 +50,7 @@ class PerfumeController extends Controller
         $validator = Validator::make($input, [
             "name"=>"required",
             "type"=>"required",
-            "price"=>"required"
+            "price"=>"required|integer"
         ]);
         if($validator->fails())
         {
