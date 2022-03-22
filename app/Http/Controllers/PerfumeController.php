@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Perfume;
 
 class PerfumeController extends Controller
 {
@@ -10,7 +11,7 @@ class PerfumeController extends Controller
 
         $perfumes = Perfume::all();
 
-        return view( "/perfumes" );
+        return view("/perfumes", ["perfumes"=>$perfumes]);
     }
 
     public function newPerfume() {
