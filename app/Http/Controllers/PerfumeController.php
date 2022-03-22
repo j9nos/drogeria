@@ -41,8 +41,14 @@ class PerfumeController extends Controller
         ]);
     }
 
-    public function updatePerfume( Request $request ) {
-
+    public function updatePerfume( Request $request, Perfume $perfume ) {
+        $perfume->update([
+            'name'=>$request->name,
+            'type'=>$request->type,
+            'price'=>$request->price,
+        ]);
+        $perfumes = Perfume::all();
+        return view("/perfumes", ["perfumes"=>$perfumes]);
     }
 
     public function deletePerfume( $id ) {

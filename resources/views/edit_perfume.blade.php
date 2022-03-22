@@ -12,8 +12,9 @@
     </ul>
 @endif
 
-<form action="/update-perfume" method="post">
+<form action="{{route('update', $perfume)}}" method="post">
     @csrf
+    @method("put")
     <input type="hidden" name="id" value="{{ $perfume->id }}">
     <p>
         <label for="">Név</label>
