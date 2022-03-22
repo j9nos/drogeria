@@ -1,5 +1,4 @@
 @extends( "layouts.master" )
-
 @section( "content" )
 
 <a href="/new-perfume"><button>Új termék</button></a>
@@ -34,3 +33,10 @@
     </tbody>   
 </table>
 @endsection
+
+
+@if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif

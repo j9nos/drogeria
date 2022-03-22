@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Perfume;
+use Validator;
 
 class PerfumeController extends Controller
 {
@@ -42,6 +43,17 @@ class PerfumeController extends Controller
     }
 
     public function updatePerfume( Request $request, Perfume $perfume ) {
+
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            "name"=>"required",
+            "type"=>"required",
+            "price"=>"required"
+        ]);
+        if($validator->fails())
+        {
+            return redirect("/perfumes")->with('alert', "Ne hagyj mezőt üresen!");
+        }
         $perfume->update([
             'name'=>$request->name,
             'type'=>$request->type,
@@ -54,7 +66,6 @@ class PerfumeController extends Controller
 
         $perfume = Perfume::find( $id );
         $perfume->delete();
-
         return redirect( "/perfumes" );
     }
 }
